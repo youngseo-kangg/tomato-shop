@@ -1,0 +1,50 @@
+[
+    {
+        "handle": "tomato-coin-wallet",
+        "price": 18000,
+        "currency": "KRW",
+        "tags": ["new"],
+        "color": "#e23b2e",
+        "title": { "ko": "토마토 반지갑", "en": "Tomato Coin Wallet" },
+        "description": {
+            "ko": "토마토 모양의 미니 반지갑. 동전과 카드를 쏙.",
+            "en": "A tomato-shaped mini coin purse for coins and cards."
+        }
+    },
+    {
+        "handle": "tomato-object",
+        "price": 32000,
+        "currency": "KRW",
+        "tags": ["new", "best"],
+        "color": "#d6342a",
+        "title": { "ko": "토마토 오브제", "en": "Tomato Object" },
+        "description": {
+            "ko": "책상 위 포인트가 되는 토마토 오브제.",
+            "en": "A tomato object that adds a pop to your desk."
+        }
+    },
+    {
+        "handle": "tomato-cushion",
+        "price": 45000,
+        "currency": "KRW",
+        "tags": ["best"],
+        "color": "#c62f25",
+        "title": { "ko": "토마토 방석", "en": "Tomato Cushion" },
+        "description": {
+            "ko": "푹신한 토마토 방석. 앉을 때마다 기분 좋게.",
+            "en": "A plump tomato cushion that feels great to sit on."
+        }
+    },
+    {
+        "handle": "tomato-stress-ball",
+        "price": 9000,
+        "currency": "KRW",
+        "tags": ["new"],
+        "color": "#ef4a3c",
+        "title": { "ko": "토마토 스트레스볼", "en": "Tomato Stress Ball" },
+        "description": {
+            "ko": "조물조물 토마토 스트레스볼.",
+            "en": "A squishy tomato stress ball."
+        }
+    }
+]
