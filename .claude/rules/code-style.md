@@ -35,5 +35,5 @@
 ## 포맷
 
 - **Prettier 적용됨** + `prettier-plugin-tailwindcss`(클래스 자동 정렬). 설정은 `.prettierrc.json`
-- 설정값: 4-space indent · 120 line-width · single quote · trailing comma `all` · semi (corporate-shop과 동일)
+- 설정값: 4-space indent · 120 line-width · single quote · trailing comma `all` · semi
 - 적용: `pnpm format` (작성) / `pnpm format:check` (검사). 마크다운은 `.prettierignore`로 제외

@@ -6,7 +6,7 @@
 ## 프로젝트 개요
 
 - **이름**: tomato-shop — 토마토 굿즈 데모 커머스 (토마토 반지갑·오브제·방석·스트레스볼)
-- **목적**: corporate-shop(레퍼런스 스토어프론트)의 좋은 패턴은 가져오고 약점은 고친, 더 가볍고 깔끔한 사이드 프로젝트
+- **목적**: 좋은 스토어프론트 패턴을 가볍고 깔끔하게 정리한 사이드 프로젝트
 - **스택**: Next.js 16 (Turbopack) · React 19.2 · TypeScript strict · Tailwind v4 · next-intl 4 · TanStack Query 5 · pnpm
 - **데이터**: 로컬 JSON (`src/data/*.json`) — Shopify/외부 API 없음. repository 함수로 추상화해 나중에 교체 가능
 - **로케일**: `ko`(기본, `/`) · `en`(`/en`). ISR 유지가 전제
