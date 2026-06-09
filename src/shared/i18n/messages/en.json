@@ -1,21 +1,21 @@
 {
-	"common": {
-		"brand": "TMT",
-		"addToWishlist": "Add to wishlist",
-		"viewDetail": "View detail"
-	},
-	"home": {
-		"title": "Tomato goods",
-		"subtitle": "Little things made of tomato"
-	},
-	"catalog": {
-		"title": "All products",
-		"empty": "No products",
-		"searchPlaceholder": "Search products...",
-		"resultCount": "{count} products"
-	},
-	"product": {
-		"notFound": "Product not found",
-		"loadError": "Failed to load product"
-	}
+    "common": {
+        "brand": "TMT",
+        "addToWishlist": "Add to wishlist",
+        "viewDetail": "View detail"
+    },
+    "home": {
+        "title": "Tomato goods",
+        "subtitle": "Little things made of tomato"
+    },
+    "catalog": {
+        "title": "All products",
+        "empty": "No products",
+        "searchPlaceholder": "Search products...",
+        "resultCount": "{count} products"
+    },
+    "product": {
+        "notFound": "Product not found",
+        "loadError": "Failed to load product"
+    }
 }

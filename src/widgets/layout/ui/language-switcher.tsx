@@ -24,7 +24,10 @@ export function LanguageSwitcher() {
                     key={code}
                     href={pathname}
                     locale={code}
-                    className={cn('rounded px-2 py-1', active === code ? 'bg-foreground/10 font-medium' : 'text-foreground/60')}
+                    className={cn(
+                        'rounded px-2 py-1',
+                        active === code ? 'bg-foreground/10 font-medium' : 'text-foreground/60',
+                    )}
                 >
                     {label}
                 </Link>

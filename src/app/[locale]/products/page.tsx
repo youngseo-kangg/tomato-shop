@@ -1,7 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import { getAllProducts, ProductCard } from '@entities/product';
 import type { Locale } from '@shared/i18n';
+
+import { getAllProducts, ProductCard } from '@entities/product';
 
 export const revalidate = 300;
 
@@ -15,7 +16,7 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
         <section>
             <h1 className="text-2xl font-semibold">{t('title')}</h1>
             <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3">
-                {products.map(product => (
+                {products.map((product) => (
                     <ProductCard key={product.handle} product={product} locale={locale as Locale} />
                 ))}
             </div>

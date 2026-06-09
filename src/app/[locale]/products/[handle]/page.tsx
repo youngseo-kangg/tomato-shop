@@ -2,16 +2,17 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 
-import { getAllProductHandles, getProductByHandle } from '@entities/product';
 import { routing, type Locale } from '@shared/i18n';
 import { formatPrice } from '@shared/libs';
 import { Badge } from '@shared/ui';
+
+import { getAllProductHandles, getProductByHandle } from '@entities/product';
 
 export const revalidate = 300;
 
 // 핵심 핸들을 빌드 타임에 prerender (locale × handle 조합)
 export function generateStaticParams() {
-    return routing.locales.flatMap(locale => getAllProductHandles().map(handle => ({ locale, handle })));
+    return routing.locales.flatMap((locale) => getAllProductHandles().map((handle) => ({ locale, handle })));
 }
 
 export async function generateMetadata({
@@ -25,11 +26,7 @@ export async function generateMetadata({
     return { title: product.title, description: product.description };
 }
 
-export default async function ProductDetailPage({
-    params,
-}: {
-    params: Promise<{ locale: string; handle: string }>;
-}) {
+export default async function ProductDetailPage({ params }: { params: Promise<{ locale: string; handle: string }> }) {
     const { locale, handle } = await params;
     setRequestLocale(locale);
     const product = await getProductByHandle(handle, locale as Locale);
@@ -44,7 +41,7 @@ export default async function ProductDetailPage({
                     {product.tags.includes('best') && <Badge>BEST</Badge>}
                 </div>
                 <p className="mt-2 text-lg">{formatPrice(product.price, product.currency, locale as Locale)}</p>
-                <p className="mt-4 text-sm text-foreground/70">{product.description}</p>
+                <p className="text-foreground/70 mt-4 text-sm">{product.description}</p>
             </div>
         </article>
     );

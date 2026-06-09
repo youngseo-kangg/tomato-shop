@@ -8,7 +8,7 @@ import { Button } from '@shared/ui';
 export default function LocaleError({ reset }: { error: Error; reset: () => void }) {
     return (
         <div role="alert" className="flex flex-col items-start gap-4 py-12">
-            <p className="text-sm text-foreground/70">Something went wrong.</p>
+            <p className="text-foreground/70 text-sm">Something went wrong.</p>
             <Button onClick={reset}>Try again</Button>
         </div>
     );

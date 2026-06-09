@@ -1,5 +1,6 @@
-import type { Product } from '@entities/product';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import type { Product } from '@entities/product';
 
 import { renderWithProviders, screen } from '@/test/test-utils';
 

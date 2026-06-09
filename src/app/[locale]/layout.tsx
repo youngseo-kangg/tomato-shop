@@ -4,9 +4,11 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 
-import { QueryProvider } from '@app/providers';
 import { routing } from '@shared/i18n';
+
 import { Header } from '@widgets/layout';
+
+import { QueryProvider } from '@app/providers';
 
 import '../globals.css';
 
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
 
 // 모든 로케일을 빌드 타임에 생성 → '/'(ko), '/en' 모두 정적
 export function generateStaticParams() {
-    return routing.locales.map(locale => ({ locale }));
+    return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import { searchProducts } from '@entities/product';
 import { routing, type Locale } from '@shared/i18n';
+
+import { searchProducts } from '@entities/product';
 
 /**
  * 클라이언트(TanStack Query)에서 호출하는 검색 엔드포인트.

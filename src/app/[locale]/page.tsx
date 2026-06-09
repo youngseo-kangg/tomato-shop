@@ -13,7 +13,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     return (
         <section>
             <h1 className="text-2xl font-semibold">{t('title')}</h1>
-            <p className="mt-1 text-sm text-foreground/60">{t('subtitle')}</p>
+            <p className="text-foreground/60 mt-1 text-sm">{t('subtitle')}</p>
 
             {/* 정적 껍데기(이 페이지) + 동적 조각(검색은 클라이언트 TanStack Query) */}
             <div className="mt-8">

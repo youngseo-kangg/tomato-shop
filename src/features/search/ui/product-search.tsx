@@ -4,9 +4,10 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { ProductCard } from '@entities/product';
 import type { Locale } from '@shared/i18n';
 import { SearchInput } from '@shared/ui';
+
+import { ProductCard } from '@entities/product';
 
 import { fetchProducts } from '../api/fetch-products';
 
@@ -29,7 +30,7 @@ export function ProductSearch() {
         <div>
             <SearchInput
                 value={query}
-                onChange={e => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder={t('searchPlaceholder')}
                 aria-label={t('searchPlaceholder')}
             />
@@ -37,13 +38,13 @@ export function ProductSearch() {
             {isError && <p className="mt-4 text-sm text-red-500">{t('empty')}</p>}
 
             {!isError && (
-                <p className="mt-4 text-sm text-foreground/60" aria-live="polite">
+                <p className="text-foreground/60 mt-4 text-sm" aria-live="polite">
                     {isLoading ? '…' : t('resultCount', { count: data?.length ?? 0 })}
                 </p>
             )}
 
             <div className="mt-4 grid grid-cols-2 gap-6 sm:grid-cols-3">
-                {data?.map(product => (
+                {data?.map((product) => (
                     <ProductCard key={product.handle} product={product} locale={locale} />
                 ))}
             </div>

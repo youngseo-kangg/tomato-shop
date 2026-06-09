@@ -1,5 +1,6 @@
-import type { Product } from '@entities/product';
 import type { Locale } from '@shared/i18n';
+
+import type { Product } from '@entities/product';
 
 /** 검색 API 호출 래퍼 (클라이언트 전용) */
 export async function fetchProducts(query: string, locale: Locale): Promise<Product[]> {

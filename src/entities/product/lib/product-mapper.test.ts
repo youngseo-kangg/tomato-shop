@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import type { RawProduct } from '../types/product';
+
 import { toProduct } from './product-mapper';
 
 const raw: RawProduct = {

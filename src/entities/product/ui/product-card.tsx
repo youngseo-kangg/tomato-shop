@@ -26,7 +26,7 @@ export function ProductCard({ product, locale }: ProductCardProps) {
                 <h3 className="text-sm font-medium group-hover:underline">{product.title}</h3>
                 {product.tags.includes('best') && <Badge>BEST</Badge>}
             </div>
-            <p className="mt-1 text-sm text-foreground/60">{formatPrice(product.price, product.currency, locale)}</p>
+            <p className="text-foreground/60 mt-1 text-sm">{formatPrice(product.price, product.currency, locale)}</p>
         </Link>
     );
 }
