@@ -24,8 +24,9 @@
 ## Import 순서
 
 - 순서: builtin → external → internal(`@shared`/`@entities`/...) → parent → sibling → index
-- **`eslint-plugin-import`의 order 룰로 강제** (auto-fix). create-next-app flat config에 룰 추가
-  - `> 셋업 예정` — 패키지 설치 + eslint.config.mjs 룰 추가는 별도 스텝
+- **`eslint-plugin-import`의 `import/order` 룰로 강제** (auto-fix). `eslint.config.mjs`에 설정됨
+  - `@shared`→`@entities`→`@features`→`@widgets`→`@app` 순으로 pathGroups 지정, 그룹 간 빈 줄, 알파벳 정렬
+  - 적용: `pnpm lint:fix`. (참고: `import` 플러그인은 eslint-config-next가 이미 등록하므로 재선언 금지)
 
 ## Tailwind
 
@@ -33,6 +34,6 @@
 
 ## 포맷
 
-- **Prettier 도입** + `prettier-plugin-tailwindcss`(클래스 자동 정렬)
-- 설정: 4-space indent · 120 line-width · single quote · trailing comma (corporate-shop과 동일)
-- `> 셋업 예정` — 패키지 설치 + `.prettierrc` + `format` 스크립트는 별도 스텝
+- **Prettier 적용됨** + `prettier-plugin-tailwindcss`(클래스 자동 정렬). 설정은 `.prettierrc.json`
+- 설정값: 4-space indent · 120 line-width · single quote · trailing comma `all` · semi (corporate-shop과 동일)
+- 적용: `pnpm format` (작성) / `pnpm format:check` (검사). 마크다운은 `.prettierignore`로 제외

@@ -9,10 +9,10 @@
 - [ ] **상품 이미지** — 현재 컬러 박스(placeholder) → 실제 이미지. next/image + `public/` 또는 외부 URL
 - [ ] **상품 설명 보강** — `products.json` description 확장, 상세 페이지 표현 개선
 
-## 툴링 (결정됨, 설치만 남음)
+## 툴링
 
-- [ ] **Prettier 셋업** — `prettier` + `prettier-plugin-tailwindcss`, `.prettierrc`(4-space·120·single quote·trailing comma), `format` 스크립트
-- [ ] **ESLint import 순서** — `eslint-plugin-import` order 룰을 `eslint.config.mjs`에 추가
+- [x] **Prettier 셋업** — `prettier` + `prettier-plugin-tailwindcss`, `.prettierrc.json`, `format`/`format:check` 스크립트
+- [x] **ESLint import 순서** — `eslint-plugin-import` `import/order` 룰을 `eslint.config.mjs`에 추가
 
 ## 나중에
 
