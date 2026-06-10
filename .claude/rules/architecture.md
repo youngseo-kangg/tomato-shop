@@ -52,6 +52,11 @@ Atomic은 **프레젠테이션 컴포넌트 분류**, FSD는 **도메인 수직 
 - 유저별 개인화(쿠키 의존)는 **Client Component** 또는 **`<Suspense>` 구멍**으로 격리 → "정적 껍데기 + 동적 구멍"
 - 네비게이션은 `@shared/i18n`의 `Link`/`redirect`/`usePathname`/`useRouter` 사용. **`/${locale}/...` 하드코딩 금지** (ko는 prefix 없음)
 
+### proxy(미들웨어) 위치 함정 ⚠️
+
+- 로케일 라우팅은 `proxy.ts`(Next 16의 구 `middleware.ts`)의 `createMiddleware(routing)`가 담당. 이게 안 돌면 **prefix 없는 기본 로케일(ko) 경로가 전부 404** (`/`, `/products`, `/products/[handle]` …). `/en`만 살아있으면 이 증상 의심.
+- `app`이 `src/app`에 있으므로 proxy도 **반드시 `src/proxy.ts`** (app과 같은 레벨). **루트 `proxy.ts`는 인식 안 됨.** 확인법: `next build` 출력에 `ƒ Proxy (Middleware)` 줄이 있으면 인식된 것.
+
 ## 상태 관리
 
 - **서버 상태 = TanStack Query** (client fetch). Context 비대화 금지

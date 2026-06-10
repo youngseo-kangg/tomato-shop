@@ -31,7 +31,8 @@ src/
 ├── features/    # 유저 액션/상태변경: ui · api · (hooks)
 ├── widgets/     # 여러 슬라이스 조합 (layout 등)
 ├── data/        # 로컬 JSON 데이터 소스
-└── app/         # Next App Router (+ providers, error/loading 경계)
+├── app/         # Next App Router (+ providers, error/loading 경계)
+└── proxy.ts     # 로케일 라우팅 미들웨어 (★ app과 같은 레벨이라 src/ 안. 루트면 미인식 → ko 전체 404)
 ```
 
 ## 경로 별칭
