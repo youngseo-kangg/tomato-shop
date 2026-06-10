@@ -7,8 +7,10 @@ export interface RawProduct {
     currency: string;
     tags: string[];
     color: string;
+    image: string;
     title: Record<Locale, string>;
     description: Record<Locale, string>;
+    highlights: Record<Locale, string[]>;
 }
 
 /** UI가 소비하는 도메인 모델 (특정 로케일로 해석 완료된 상태) */
@@ -18,6 +20,8 @@ export interface Product {
     currency: string;
     tags: string[];
     color: string;
+    image: string;
     title: string;
     description: string;
+    highlights: string[];
 }

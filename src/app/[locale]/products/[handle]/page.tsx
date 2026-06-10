@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 
@@ -34,14 +35,38 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
     return (
         <article className="grid gap-8 sm:grid-cols-2">
-            <div className="aspect-square w-full rounded-lg" style={{ backgroundColor: product.color }} aria-hidden />
+            <div
+                className="relative aspect-square w-full overflow-hidden rounded-lg"
+                style={{ backgroundColor: product.color }}
+            >
+                <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                    priority
+                />
+            </div>
             <div>
                 <div className="flex items-center gap-2">
                     <h1 className="text-2xl font-semibold">{product.title}</h1>
                     {product.tags.includes('best') && <Badge>BEST</Badge>}
                 </div>
                 <p className="mt-2 text-lg">{formatPrice(product.price, product.currency, locale as Locale)}</p>
-                <p className="text-foreground/70 mt-4 text-sm">{product.description}</p>
+                <p className="text-foreground/70 mt-4 text-sm leading-relaxed">{product.description}</p>
+                {product.highlights.length > 0 && (
+                    <ul className="border-foreground/10 mt-6 space-y-2 border-t pt-6">
+                        {product.highlights.map((highlight) => (
+                            <li key={highlight} className="text-foreground/80 flex items-start gap-2 text-sm">
+                                <span aria-hidden style={{ color: product.color }}>
+                                    •
+                                </span>
+                                {highlight}
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
         </article>
     );

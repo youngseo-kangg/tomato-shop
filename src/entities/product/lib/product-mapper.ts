@@ -13,7 +13,9 @@ export function toProduct(raw: RawProduct, locale: Locale): Product {
         currency: raw.currency,
         tags: raw.tags,
         color: raw.color,
+        image: raw.image,
         title: raw.title[locale],
         description: raw.description[locale],
+        highlights: raw.highlights[locale],
     };
 }

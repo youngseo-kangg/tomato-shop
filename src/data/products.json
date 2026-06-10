@@ -5,46 +5,134 @@
         "currency": "KRW",
         "tags": ["new"],
         "color": "#e23b2e",
-        "title": { "ko": "토마토 반지갑", "en": "Tomato Coin Wallet" },
+        "image": "/products/tomato-coin-wallet.png",
+        "title": { "ko": "토마토 동전지갑", "en": "Tomato Coin Wallet" },
         "description": {
-            "ko": "토마토 모양의 미니 반지갑. 동전과 카드를 쏙.",
-            "en": "A tomato-shaped mini coin purse for coins and cards."
+            "ko": "토마토 단면을 그대로 옮긴 원형 동전지갑입니다. 동전과 이어버드, 카드 한두 장을 넣기 좋은 크기로, 지퍼를 빙 둘러 여닫아요. 가방 속에서도 금방 눈에 띕니다.",
+            "en": "A round coin purse printed with a cross-section of a tomato. Just right for coins, earbuds, or a card or two, with a zipper that runs all the way around. Easy to spot inside a bag."
+        },
+        "highlights": {
+            "ko": ["원형 지퍼 개폐", "동전·이어버드 수납", "토마토 단면 프린트"],
+            "en": ["Round zip closure", "Holds coins & earbuds", "Tomato cross-section print"]
         }
     },
     {
-        "handle": "tomato-object",
-        "price": 32000,
-        "currency": "KRW",
-        "tags": ["new", "best"],
-        "color": "#d6342a",
-        "title": { "ko": "토마토 오브제", "en": "Tomato Object" },
-        "description": {
-            "ko": "책상 위 포인트가 되는 토마토 오브제.",
-            "en": "A tomato object that adds a pop to your desk."
-        }
-    },
-    {
-        "handle": "tomato-cushion",
+        "handle": "tomato-cushion-large",
         "price": 45000,
         "currency": "KRW",
         "tags": ["best"],
         "color": "#c62f25",
-        "title": { "ko": "토마토 방석", "en": "Tomato Cushion" },
+        "image": "/products/tomato-cushion-large.png",
+        "title": { "ko": "토마토 쿠션 라지", "en": "Tomato Cushion Large" },
         "description": {
-            "ko": "푹신한 토마토 방석. 앉을 때마다 기분 좋게.",
-            "en": "A plump tomato cushion that feels great to sit on."
+            "ko": "물방울이 송골송골 맺힌 듯한 디테일이 살아 있는 푹신한 토마토 쿠션입니다. 소파나 침대에 두기 좋고, 커버는 분리해 세탁할 수 있어 오래 깨끗하게 씁니다.",
+            "en": "A plump tomato cushion with lifelike dewy-droplet detailing. Great on a sofa or bed, and the cover zips off for washing so it stays fresh."
+        },
+        "highlights": {
+            "ko": ["분리형 세탁 커버", "푹신한 충전재", "지름 약 40cm"],
+            "en": ["Removable washable cover", "Plush filling", "About 40cm wide"]
         }
     },
     {
-        "handle": "tomato-stress-ball",
-        "price": 9000,
+        "handle": "tomato-cushion-medium",
+        "price": 39000,
+        "currency": "KRW",
+        "tags": ["new"],
+        "color": "#d6342a",
+        "image": "/products/tomato-cushion-medium.png",
+        "title": { "ko": "토마토 쿠션 미디엄", "en": "Tomato Cushion Medium" },
+        "description": {
+            "ko": "큼직한 꼭지 자수가 포인트인 미디엄 사이즈 토마토 쿠션입니다. 라지보다 한 단계 작아 작은 의자나 아이 방에도 부담 없이 어울립니다.",
+            "en": "A medium tomato cushion with a bold embroidered stem as its highlight. One size down from the large, it fits small chairs or a kid's room with ease."
+        },
+        "highlights": {
+            "ko": ["꼭지 자수 디테일", "미디엄 사이즈", "지름 약 32cm"],
+            "en": ["Embroidered stem detail", "Medium size", "About 32cm wide"]
+        }
+    },
+    {
+        "handle": "tomato-cushion-small-set",
+        "price": 69000,
+        "currency": "KRW",
+        "tags": ["new", "best"],
+        "color": "#ef4a3c",
+        "image": "/products/tomato-cushion-small-set.png",
+        "title": { "ko": "토마토 쿠션 미니 3종 세트", "en": "Tomato Cushion Mini Set of 3" },
+        "description": {
+            "ko": "빨강·노랑·초록 세 가지 색을 모은 미니 토마토 쿠션 세트입니다. 나란히 두면 그 자체로 공간의 포인트가 되고, 하나씩 떼어 의자나 소파에 두기도 좋습니다.",
+            "en": "A mini tomato cushion set in three colors — red, yellow, and green. Lined up they become a centerpiece on their own, and they work just as well one at a time on a chair or sofa."
+        },
+        "highlights": {
+            "ko": ["3color 구성(빨강·노랑·초록)", "미니 사이즈 3개", "각 지름 약 24cm"],
+            "en": ["3 colors (red, yellow, green)", "Three mini cushions", "About 24cm wide each"]
+        }
+    },
+    {
+        "handle": "tomato-coaster",
+        "price": 12000,
+        "currency": "KRW",
+        "tags": ["new"],
+        "color": "#e23b2e",
+        "image": "/products/tomato-coaster.png",
+        "title": { "ko": "토마토 코스터", "en": "Tomato Coaster" },
+        "description": {
+            "ko": "토마토를 슬라이스한 듯한 원형 코스터 2장 세트입니다. 컵 밑에 두면 물자국을 잡아주고, 식탁이나 책상 위에 산뜻한 색을 더합니다.",
+            "en": "A set of two round coasters that look like tomato slices. They catch condensation under your cup and add a fresh pop of color to a table or desk."
+        },
+        "highlights": {
+            "ko": ["2장 세트", "물자국 흡수", "토마토 슬라이스 디자인"],
+            "en": ["Set of 2", "Soaks up condensation", "Tomato-slice design"]
+        }
+    },
+    {
+        "handle": "tomato-mug",
+        "price": 16000,
+        "currency": "KRW",
+        "tags": ["new"],
+        "color": "#d6342a",
+        "image": "/products/tomato-mug.png",
+        "title": { "ko": "토마토 머그", "en": "Tomato Mug" },
+        "description": {
+            "ko": "토마토 단면을 큼직하게 프린트한 머그컵입니다. 흰 바탕에 빨간 토마토가 선명하게 들어가 아침 커피 한 잔도 기분 좋게 만들어 줍니다.",
+            "en": "A mug with a big tomato cross-section printed across it. The bright red tomato on white makes even a plain morning coffee feel a little brighter."
+        },
+        "highlights": {
+            "ko": ["약 350ml 용량", "토마토 단면 프린트", "전자레인지 사용 가능"],
+            "en": ["About 350ml", "Tomato cross-section print", "Microwave safe"]
+        }
+    },
+    {
+        "handle": "tomato-pot-holder",
+        "price": 14000,
+        "currency": "KRW",
+        "tags": [],
+        "color": "#c62f25",
+        "image": "/products/tomato-pot-holder.png",
+        "title": { "ko": "토마토 냄비받침", "en": "Tomato Pot Holder" },
+        "description": {
+            "ko": "토마토 슬라이스 모양의 두툼한 냄비받침입니다. 뜨거운 냄비나 팬을 올려두기 좋고, 고리가 달려 있어 주방 한쪽에 걸어두기도 편합니다.",
+            "en": "A thick pot holder shaped like a tomato slice. It takes hot pots and pans with ease, and the loop lets you hang it on the side of the kitchen."
+        },
+        "highlights": {
+            "ko": ["두툼한 단열 패딩", "걸이용 고리", "토마토 슬라이스 디자인"],
+            "en": ["Thick heat-resistant padding", "Hanging loop", "Tomato-slice design"]
+        }
+    },
+    {
+        "handle": "tomato-light",
+        "price": 38000,
         "currency": "KRW",
         "tags": ["new"],
         "color": "#ef4a3c",
-        "title": { "ko": "토마토 스트레스볼", "en": "Tomato Stress Ball" },
+        "image": "/products/tomato-light.png",
+        "title": { "ko": "토마토 무드등", "en": "Tomato Light" },
         "description": {
-            "ko": "조물조물 토마토 스트레스볼.",
-            "en": "A squishy tomato stress ball."
+            "ko": "진짜 토마토처럼 동그란 무드등입니다. 불을 켜면 안쪽이 은은하게 익은 토마토 빛으로 물들어, 침대 옆이나 선반 위에 두기 좋은 따뜻한 조명이 됩니다.",
+            "en": "A mood light as round as a real tomato. Switched on, it glows with a soft ripe-tomato warmth — a cozy little light for a bedside table or shelf."
+        },
+        "highlights": {
+            "ko": ["은은한 무드 조명", "USB 충전식", "침대 옆·선반용"],
+            "en": ["Soft ambient glow", "USB rechargeable", "For bedside or shelf"]
         }
     }
 ]

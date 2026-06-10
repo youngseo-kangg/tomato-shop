@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import type { Locale } from '@shared/i18n';
 import { Link } from '@shared/i18n';
 import { formatPrice } from '@shared/libs';
@@ -18,10 +20,17 @@ export function ProductCard({ product, locale }: ProductCardProps) {
     return (
         <Link href={`/products/${product.handle}`} className="group block">
             <div
-                className="mb-3 aspect-square w-full rounded-lg"
+                className="relative mb-3 aspect-square w-full overflow-hidden rounded-lg"
                 style={{ backgroundColor: product.color }}
-                aria-hidden
-            />
+            >
+                <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+            </div>
             <div className="flex items-start justify-between gap-2">
                 <h3 className="text-sm font-medium group-hover:underline">{product.title}</h3>
                 {product.tags.includes('best') && <Badge>BEST</Badge>}

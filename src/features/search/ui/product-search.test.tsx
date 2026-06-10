@@ -7,8 +7,28 @@ import { renderWithProviders, screen } from '@/test/test-utils';
 import { ProductSearch } from './product-search';
 
 const MOCK: Product[] = [
-    { handle: 'a', price: 1000, currency: 'KRW', tags: [], color: '#000', title: '리넨 셔츠', description: '' },
-    { handle: 'b', price: 2000, currency: 'KRW', tags: ['best'], color: '#000', title: '울 니트', description: '' },
+    {
+        handle: 'a',
+        price: 1000,
+        currency: 'KRW',
+        tags: [],
+        color: '#000',
+        image: '/products/a.webp',
+        title: '리넨 셔츠',
+        description: '',
+        highlights: [],
+    },
+    {
+        handle: 'b',
+        price: 2000,
+        currency: 'KRW',
+        tags: ['best'],
+        color: '#000',
+        image: '/products/b.webp',
+        title: '울 니트',
+        description: '',
+        highlights: [],
+    },
 ];
 
 beforeEach(() => {
