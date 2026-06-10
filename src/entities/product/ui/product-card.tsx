@@ -25,7 +25,7 @@ export function ProductCard({ product, locale }: ProductCardProps) {
             >
                 <Image
                     src={product.image}
-                    alt={product.title}
+                    alt=""
                     fill
                     sizes="(min-width: 640px) 33vw, 50vw"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"

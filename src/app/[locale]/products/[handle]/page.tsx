@@ -41,7 +41,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             >
                 <Image
                     src={product.image}
-                    alt={product.title}
+                    alt=""
                     fill
                     sizes="(min-width: 640px) 50vw, 100vw"
                     className="object-cover"
@@ -57,8 +57,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 <p className="text-foreground/70 mt-4 text-sm leading-relaxed">{product.description}</p>
                 {product.highlights.length > 0 && (
                     <ul className="border-foreground/10 mt-6 space-y-2 border-t pt-6">
-                        {product.highlights.map((highlight) => (
-                            <li key={highlight} className="text-foreground/80 flex items-start gap-2 text-sm">
+                        {product.highlights.map((highlight, i) => (
+                            <li key={`${product.handle}-${i}`} className="text-foreground/80 flex items-start gap-2 text-sm">
                                 <span aria-hidden style={{ color: product.color }}>
                                     •
                                 </span>
