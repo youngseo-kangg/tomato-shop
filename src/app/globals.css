@@ -1,26 +1,127 @@
 @import 'tailwindcss';
 
+/* 다크모드: prefers-color-scheme 자동이 아니라 <html>.dark class 전략 (수동 토글) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 브랜드: 토마토 컬러 패밀리 (테마 무관 고정색 → @theme에 직접 선언, bg-tomato-500 등 유틸 생성).
+   Tailwind 기본 yellow/green과 충돌하지 않도록 tomato- 네임스페이스 유지 (bg-tomato-green-500 식). */
+@theme {
+    /* 잘 익은 빨강 토마토 (메인 브랜드) */
+    --color-tomato-50: #fef2f1;
+    --color-tomato-100: #fde1de;
+    --color-tomato-200: #fbc8c2;
+    --color-tomato-300: #f7a39a;
+    --color-tomato-400: #f17163;
+    --color-tomato-500: #e23b2e;
+    --color-tomato-600: #c62f25;
+    --color-tomato-700: #a52419;
+    --color-tomato-800: #88211a;
+    --color-tomato-900: #71201b;
+
+    /* 노란 토마토 (골든) */
+    --color-tomato-yellow-50: #fef8e7;
+    --color-tomato-yellow-100: #fdedc2;
+    --color-tomato-yellow-200: #fadd88;
+    --color-tomato-yellow-300: #f5c945;
+    --color-tomato-yellow-400: #ecb31d;
+    --color-tomato-yellow-500: #d99e12;
+    --color-tomato-yellow-600: #b67f0d;
+    --color-tomato-yellow-700: #915f0f;
+    --color-tomato-yellow-800: #784d12;
+    --color-tomato-yellow-900: #654013;
+
+    /* 초록 토마토 (올리브/그린) */
+    --color-tomato-green-50: #f3f6ec;
+    --color-tomato-green-100: #e3edd0;
+    --color-tomato-green-200: #c9dca6;
+    --color-tomato-green-300: #a9c573;
+    --color-tomato-green-400: #8aab4b;
+    --color-tomato-green-500: #6f8f3a;
+    --color-tomato-green-600: #58732d;
+    --color-tomato-green-700: #455a26;
+    --color-tomato-green-800: #394a22;
+    --color-tomato-green-900: #313f20;
+}
+
+/* 시맨틱 역할 토큰 (라이트). 테마에 따라 값이 바뀌므로 변수로 두고 @theme inline에서 매핑 */
 :root {
     --background: #ffffff;
     --foreground: #171717;
+
+    --card: #ffffff;
+    --card-foreground: #171717;
+
+    --muted: #f5f5f4;
+    --muted-foreground: #78716c;
+
+    --border: #e7e5e4;
+    --input: #e7e5e4;
+
+    --primary: var(--color-tomato-500);
+    --primary-foreground: #ffffff;
+
+    --ring: var(--color-tomato-500);
+
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+
+    /* 둥글기 단일 출처. 값은 현재 기본과 동일 → 시각 회귀 없이 한 곳에서 조절 가능 */
+    --radius: 0.5rem;
+}
+
+/* 다크 테마: <html>에 .dark 클래스가 붙으면 토큰값을 덮어쓴다 (무플래시 스크립트/토글이 클래스 관리).
+   라이트와 값이 같은 토큰(primary/primary-foreground/ring)은 :root만으로 충분하므로 여기 두지 않는다. */
+.dark {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --card: #171717;
+    --card-foreground: #ededed;
+
+    --muted: #262626;
+    --muted-foreground: #a8a29e;
+
+    --border: #292524;
+    --input: #292524;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
 }
 
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-ring: var(--ring);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    /* radius 스케일을 --radius 한 토큰에서 파생 (rounded-sm/md/lg/xl) */
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
 }
 
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    /* Geist 적용 (기존 Arial 하드코딩 제거 — 로드해둔 폰트가 실제로 먹도록) */
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }

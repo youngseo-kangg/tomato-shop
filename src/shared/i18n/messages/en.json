@@ -2,7 +2,8 @@
     "common": {
         "brand": "TMT",
         "addToWishlist": "Add to wishlist",
-        "viewDetail": "View detail"
+        "viewDetail": "View detail",
+        "toggleTheme": "Toggle theme"
     },
     "home": {
         "title": "Tomato goods",

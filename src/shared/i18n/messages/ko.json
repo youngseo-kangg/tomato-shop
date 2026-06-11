@@ -2,7 +2,8 @@
     "common": {
         "brand": "TMT",
         "addToWishlist": "위시리스트에 담기",
-        "viewDetail": "자세히 보기"
+        "viewDetail": "자세히 보기",
+        "toggleTheme": "테마 전환"
     },
     "home": {
         "title": "토마토 굿즈",
