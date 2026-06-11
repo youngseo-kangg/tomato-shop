@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@shared/i18n';
 
+import { CartDrawer } from '@features/cart';
+
 import { LanguageSwitcher } from './language-switcher';
 import { ThemeToggle } from './theme-toggle';
 
@@ -21,11 +23,9 @@ export async function Header() {
                     </span>
                 </Link>
                 <div className="flex items-center gap-4">
-                    <Link href="/products" className="text-muted-foreground hover:text-foreground text-sm">
-                        {t('viewDetail')}
-                    </Link>
                     <LanguageSwitcher />
                     <ThemeToggle />
+                    <CartDrawer />
                 </div>
             </div>
         </header>

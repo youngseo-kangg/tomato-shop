@@ -10,10 +10,11 @@ import { Button } from '@shared/ui';
  */
 export default function ProductError({ reset }: { error: Error; reset: () => void }) {
     const t = useTranslations('product');
+    const tCommon = useTranslations('common');
     return (
         <div role="alert" className="flex flex-col items-start gap-4 py-12">
             <p className="text-muted-foreground text-sm">{t('loadError')}</p>
-            <Button onClick={reset}>{t('viewDetail')}</Button>
+            <Button onClick={reset}>{tCommon('retry')}</Button>
         </div>
     );
 }

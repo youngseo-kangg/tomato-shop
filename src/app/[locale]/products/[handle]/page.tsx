@@ -8,6 +8,8 @@ import { formatPrice } from '@shared/libs';
 
 import { getAllProductHandles, getProductByHandle, ProductBadge } from '@entities/product';
 
+import { AddToCartButton } from '@features/cart';
+
 export const revalidate = 300;
 
 // 핵심 핸들을 빌드 타임에 prerender (locale × handle 조합)
@@ -69,6 +71,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         ))}
                     </ul>
                 )}
+                <div className="mt-8">
+                    <AddToCartButton product={product} />
+                </div>
             </div>
         </article>
     );

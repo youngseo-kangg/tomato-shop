@@ -1,9 +1,24 @@
 {
     "common": {
         "brand": "TMT",
+        "addToCart": "Add to cart",
         "addToWishlist": "Add to wishlist",
-        "viewDetail": "View detail",
-        "toggleTheme": "Toggle theme"
+        "toggleTheme": "Toggle theme",
+        "retry": "Retry"
+    },
+    "cart": {
+        "title": "Cart",
+        "empty": "Your cart is empty",
+        "total": "Total",
+        "remove": "Remove",
+        "clear": "Clear cart",
+        "decrease": "Decrease quantity",
+        "increase": "Increase quantity",
+        "addedToast": "Added to cart",
+        "openCart": "Open cart",
+        "viewCart": "View cart",
+        "close": "Close",
+        "continueShopping": "Continue shopping"
     },
     "home": {
         "title": "Tomato goods",

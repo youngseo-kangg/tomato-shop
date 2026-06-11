@@ -5,6 +5,9 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 
 import { routing } from '@shared/i18n';
+import { ToastProvider } from '@shared/ui';
+
+import { CartProvider } from '@features/cart';
 
 import { Header } from '@widgets/layout';
 
@@ -55,8 +58,12 @@ export default async function LocaleLayout({
                 <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
                 <NextIntlClientProvider locale={locale} messages={messages}>
                     <QueryProvider>
-                        <Header />
-                        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+                        <CartProvider>
+                            <ToastProvider>
+                                <Header />
+                                <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+                            </ToastProvider>
+                        </CartProvider>
                     </QueryProvider>
                 </NextIntlClientProvider>
             </body>
