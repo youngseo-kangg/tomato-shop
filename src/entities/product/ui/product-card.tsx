@@ -3,9 +3,10 @@ import Image from 'next/image';
 import type { Locale } from '@shared/i18n';
 import { Link } from '@shared/i18n';
 import { formatPrice } from '@shared/libs';
-import { Badge } from '@shared/ui';
 
 import type { Product } from '../types/product';
+
+import { ProductBadge } from './product-badge';
 
 interface ProductCardProps {
     product: Product;
@@ -20,7 +21,7 @@ export function ProductCard({ product, locale }: ProductCardProps) {
     return (
         <Link href={`/products/${product.handle}`} className="group block">
             <div
-                className="relative mb-3 aspect-square w-full overflow-hidden rounded-lg"
+                className="relative mb-3 aspect-square w-full overflow-hidden rounded-lg shadow-sm transition-shadow group-hover:shadow-md"
                 style={{ backgroundColor: product.color }}
             >
                 <Image
@@ -33,9 +34,9 @@ export function ProductCard({ product, locale }: ProductCardProps) {
             </div>
             <div className="flex items-start justify-between gap-2">
                 <h3 className="text-sm font-medium group-hover:underline">{product.title}</h3>
-                {product.tags.includes('best') && <Badge>BEST</Badge>}
+                <ProductBadge tags={product.tags} />
             </div>
-            <p className="text-foreground/60 mt-1 text-sm">{formatPrice(product.price, product.currency, locale)}</p>
+            <p className="text-muted-foreground mt-1 text-sm">{formatPrice(product.price, product.currency, locale)}</p>
         </Link>
     );
 }
