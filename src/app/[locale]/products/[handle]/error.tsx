@@ -12,7 +12,7 @@ export default function ProductError({ reset }: { error: Error; reset: () => voi
     const t = useTranslations('product');
     return (
         <div role="alert" className="flex flex-col items-start gap-4 py-12">
-            <p className="text-foreground/70 text-sm">{t('loadError')}</p>
+            <p className="text-muted-foreground text-sm">{t('loadError')}</p>
             <Button onClick={reset}>{t('viewDetail')}</Button>
         </div>
     );

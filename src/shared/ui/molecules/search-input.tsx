@@ -12,7 +12,8 @@ export function SearchInput({ className, ...props }: InputHTMLAttributes<HTMLInp
         <input
             type="search"
             className={cn(
-                'border-foreground/20 focus:border-foreground/50 w-full rounded-md border bg-transparent px-3 py-2 text-sm outline-none',
+                'border-border w-full rounded-md border bg-transparent px-3 py-2 text-sm outline-none',
+                'focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-2',
                 className,
             )}
             {...props}

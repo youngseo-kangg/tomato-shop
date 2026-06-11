@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
                     locale={code}
                     className={cn(
                         'rounded px-2 py-1',
-                        active === code ? 'bg-foreground/10 font-medium' : 'text-foreground/60',
+                        active === code ? 'bg-muted font-medium' : 'text-muted-foreground',
                     )}
                 >
                     {label}

@@ -35,10 +35,10 @@ export function ProductSearch() {
                 aria-label={t('searchPlaceholder')}
             />
 
-            {isError && <p className="mt-4 text-sm text-red-500">{t('empty')}</p>}
+            {isError && <p className="text-destructive mt-4 text-sm">{t('empty')}</p>}
 
             {!isError && (
-                <p className="text-foreground/60 mt-4 text-sm" aria-live="polite">
+                <p className="text-muted-foreground mt-4 text-sm" aria-live="polite">
                     {isLoading ? '…' : t('resultCount', { count: data?.length ?? 0 })}
                 </p>
             )}
