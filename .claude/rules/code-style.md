@@ -20,6 +20,9 @@
 
 - 컴포넌트도 PascalCase 파일로 빼지 않는다. 이유: 규칙 단일화(컴포넌트 예외 제거), Next 필수 소문자 파일과의 일관성, macOS 대소문자 rename 함정 회피. 슬라이스의 `ui/` 위치로 이미 컴포넌트 구분됨.
 - **type suffix(`.view`/`.button` 등) 미도입.** FSD 위치(`shared/ui/atoms` vs `features/*/ui`)와 이름만으로 성격이 구분됨. 같은 폴더에서 성격이 충돌하는 경우(예: analytics tracker/trigger)가 생기면 **그때 해당 패턴만** 한정 도입.
+- **이벤트 핸들러는 `handle<Target><Action>` + 화살표 const.** `handle` 뒤에 **대상 + 동작**을 붙여 무엇을 다루는지 드러낸다: `const handleThemeToggle = () => {…}`, `handleLocaleChange`, `handleQuantityIncrement`. 막연한 `handleToggle`/`handleClick`보다 구체적으로. JSX엔 `onClick={handleThemeToggle}`. 단순 인라인 콜백(`onChange={(e) => setQuery(e.target.value)}`)은 그대로 둬도 됨. 최상위/export 함수는 기존대로 `function` 선언 유지 — 이 규칙은 컴포넌트 내부 핸들러 한정.
+- **데이터 접근/API 함수는 `<동사><대상>[<수식>]`.** 동사를 동작에 맞춰 앞에 둔다 — read는 `get`/`fetch`/`search`, write는 `create`/`update`/`delete`/`post` 등. 예: `getAllProducts`, `getProductByHandle`, `searchProducts`, `fetchProducts`. (read = `entities/*/api`, write = `features/*/api` — rules/architecture.md의 read/write 분리와 짝.)
+- **mapper(변환 순수 함수)는 `to<대상>`.** Raw(JSON) → 도메인 모델 변환은 `entities/*/lib`에 `toProduct`처럼 `to` + 결과 타입명으로. (목록 변환이면 `toProductList` 등 대상 기준으로.)
 
 ## Import 순서
 
