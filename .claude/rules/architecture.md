@@ -61,6 +61,7 @@ Atomic은 **프레젠테이션 컴포넌트 분류**, FSD는 **도메인 수직 
 
 - **서버 상태 = TanStack Query** (client fetch). Context 비대화 금지
 - 클라이언트 로컬 상태만 Context, 그때도 action은 훅으로 분리
+- **로컬 상태 store는 `features/*/model`에** (context·reducer·provider). `ui`엔 보이는 컴포넌트만 — provider/스토어를 `ui`에 두지 말 것. 순수 reducer는 React 무관 파일로 분리해 단위 테스트(예: `features/cart/model/cart-reducer.ts` ↔ `cart-reducer.test.ts`)
 
 ## 에러/로딩 경계
 

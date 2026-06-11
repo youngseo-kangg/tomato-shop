@@ -28,7 +28,7 @@ src/
 │   ├── i18n/    # routing · navigation · request · messages
 │   └── libs/    # cn, formatPrice (순수 함수)
 ├── entities/    # 도메인 데이터(passive): types · api(repository) · lib(mapper) · ui(presentational)
-├── features/    # 유저 액션/상태변경: ui · api · (hooks)
+├── features/    # 유저 액션/상태변경: model(상태 store: context·reducer) · ui · api · (hooks)
 ├── widgets/     # 여러 슬라이스 조합 (layout 등)
 ├── data/        # 로컬 JSON 데이터 소스
 ├── app/         # Next App Router (+ providers, error/loading 경계)
