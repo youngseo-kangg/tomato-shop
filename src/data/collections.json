@@ -1,0 +1,18 @@
+[
+    {
+        "handle": "kitchen",
+        "title": { "ko": "주방", "en": "Kitchen" }
+    },
+    {
+        "handle": "cushion",
+        "title": { "ko": "쿠션", "en": "Cushion" }
+    },
+    {
+        "handle": "lighting",
+        "title": { "ko": "조명", "en": "Lighting" }
+    },
+    {
+        "handle": "accessory",
+        "title": { "ko": "액세서리", "en": "Accessory" }
+    }
+]

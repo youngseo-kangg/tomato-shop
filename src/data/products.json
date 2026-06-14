@@ -6,6 +6,7 @@
         "tags": ["new"],
         "color": "#e23b2e",
         "image": "/products/tomato-coin-wallet.png",
+        "collection": "accessory",
         "title": { "ko": "토마토 동전지갑", "en": "Tomato Coin Wallet" },
         "description": {
             "ko": "토마토 단면을 그대로 옮긴 원형 동전지갑입니다. 동전과 이어버드, 카드 한두 장을 넣기 좋은 크기로, 지퍼를 빙 둘러 여닫아요. 가방 속에서도 금방 눈에 띕니다.",
@@ -23,6 +24,7 @@
         "tags": ["best"],
         "color": "#c62f25",
         "image": "/products/tomato-cushion-large.png",
+        "collection": "cushion",
         "title": { "ko": "토마토 쿠션 라지", "en": "Tomato Cushion Large" },
         "description": {
             "ko": "물방울이 송골송골 맺힌 듯한 디테일이 살아 있는 푹신한 토마토 쿠션입니다. 소파나 침대에 두기 좋고, 커버는 분리해 세탁할 수 있어 오래 깨끗하게 씁니다.",
@@ -40,6 +42,7 @@
         "tags": ["new"],
         "color": "#d6342a",
         "image": "/products/tomato-cushion-medium.png",
+        "collection": "cushion",
         "title": { "ko": "토마토 쿠션 미디엄", "en": "Tomato Cushion Medium" },
         "description": {
             "ko": "큼직한 꼭지 자수가 포인트인 미디엄 사이즈 토마토 쿠션입니다. 라지보다 한 단계 작아 작은 의자나 아이 방에도 부담 없이 어울립니다.",
@@ -57,6 +60,7 @@
         "tags": ["new", "best"],
         "color": "#ef4a3c",
         "image": "/products/tomato-cushion-small-set.png",
+        "collection": "cushion",
         "title": { "ko": "토마토 쿠션 미니 3종 세트", "en": "Tomato Cushion Mini Set of 3" },
         "description": {
             "ko": "빨강·노랑·초록 세 가지 색을 모은 미니 토마토 쿠션 세트입니다. 나란히 두면 그 자체로 공간의 포인트가 되고, 하나씩 떼어 의자나 소파에 두기도 좋습니다.",
@@ -74,6 +78,7 @@
         "tags": ["new"],
         "color": "#e23b2e",
         "image": "/products/tomato-coaster.png",
+        "collection": "kitchen",
         "title": { "ko": "토마토 코스터", "en": "Tomato Coaster" },
         "description": {
             "ko": "토마토를 슬라이스한 듯한 원형 코스터 2장 세트입니다. 컵 밑에 두면 물자국을 잡아주고, 식탁이나 책상 위에 산뜻한 색을 더합니다.",
@@ -91,6 +96,7 @@
         "tags": ["new"],
         "color": "#d6342a",
         "image": "/products/tomato-mug.png",
+        "collection": "kitchen",
         "title": { "ko": "토마토 머그", "en": "Tomato Mug" },
         "description": {
             "ko": "토마토 단면을 큼직하게 프린트한 머그컵입니다. 흰 바탕에 빨간 토마토가 선명하게 들어가 아침 커피 한 잔도 기분 좋게 만들어 줍니다.",
@@ -108,6 +114,7 @@
         "tags": [],
         "color": "#c62f25",
         "image": "/products/tomato-pot-holder.png",
+        "collection": "kitchen",
         "title": { "ko": "토마토 냄비받침", "en": "Tomato Pot Holder" },
         "description": {
             "ko": "토마토 슬라이스 모양의 두툼한 냄비받침입니다. 뜨거운 냄비나 팬을 올려두기 좋고, 고리가 달려 있어 주방 한쪽에 걸어두기도 편합니다.",
@@ -125,6 +132,7 @@
         "tags": ["new"],
         "color": "#ef4a3c",
         "image": "/products/tomato-light.png",
+        "collection": "lighting",
         "title": { "ko": "토마토 무드등", "en": "Tomato Light" },
         "description": {
             "ko": "진짜 토마토처럼 동그란 무드등입니다. 불을 켜면 안쪽이 은은하게 익은 토마토 빛으로 물들어, 침대 옆이나 선반 위에 두기 좋은 따뜻한 조명이 됩니다.",

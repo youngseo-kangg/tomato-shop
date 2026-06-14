@@ -11,6 +11,7 @@ const raw: RawProduct = {
     tags: ['new'],
     color: '#fff',
     image: '/products/linen-shirt.webp',
+    collection: 'apparel',
     title: { ko: '리넨 셔츠', en: 'Linen Shirt' },
     description: { ko: '리넨', en: 'Linen' },
     highlights: { ko: ['리넨 100%', '여름용'], en: ['100% linen', 'For summer'] },
@@ -34,6 +35,7 @@ describe('toProduct', () => {
             price: 48000,
             currency: 'KRW',
             image: '/products/linen-shirt.webp',
+            collection: 'apparel',
         });
     });
 });

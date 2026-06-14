@@ -25,6 +25,11 @@ export function getAllProductHandles(): string[] {
     return DATA.map((p) => p.handle);
 }
 
+/** 특정 컬렉션(카테고리)에 속한 상품만 */
+export async function getProductsByCollection(collection: string, locale: Locale): Promise<Product[]> {
+    return DATA.filter((p) => p.collection === collection).map((raw) => toProduct(raw, locale));
+}
+
 export async function searchProducts(query: string, locale: Locale): Promise<Product[]> {
     const q = query.trim().toLowerCase();
     const products = await getAllProducts(locale);

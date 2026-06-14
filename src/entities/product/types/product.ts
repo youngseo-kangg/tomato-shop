@@ -8,6 +8,8 @@ export interface RawProduct {
     tags: string[];
     color: string;
     image: string;
+    /** 소속 컬렉션(카테고리) handle */
+    collection: string;
     title: Record<Locale, string>;
     description: Record<Locale, string>;
     highlights: Record<Locale, string[]>;
@@ -21,6 +23,7 @@ export interface Product {
     tags: string[];
     color: string;
     image: string;
+    collection: string;
     title: string;
     description: string;
     highlights: string[];
