@@ -4,7 +4,11 @@
         "addToCart": "Add to cart",
         "addToWishlist": "Add to wishlist",
         "toggleTheme": "Toggle theme",
-        "retry": "Retry"
+        "retry": "Retry",
+        "shop": "Shop",
+        "menu": "Menu",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
     },
     "cart": {
         "title": "Cart",
