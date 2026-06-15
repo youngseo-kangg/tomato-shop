@@ -1,22 +1,10 @@
-'use client';
-
 import type { InputHTMLAttributes } from 'react';
 
-import { cn } from '@shared/libs';
+import { Input } from '../atoms/input';
 
 /**
- * Atomic: molecule (atom 조합, 여전히 도메인 무관) → shared/ui.
+ * Atomic: molecule. Input atom을 type="search"로 감싼 도메인 무관 검색 입력.
  */
-export function SearchInput({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
-    return (
-        <input
-            type="search"
-            className={cn(
-                'border-border w-full rounded-md border bg-transparent px-3 py-2 text-sm outline-none',
-                'focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-2',
-                className,
-            )}
-            {...props}
-        />
-    );
+export function SearchInput(props: InputHTMLAttributes<HTMLInputElement>) {
+    return <Input type="search" {...props} />;
 }
