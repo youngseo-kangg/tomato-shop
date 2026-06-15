@@ -10,10 +10,20 @@
         "openMenu": "메뉴 열기",
         "closeMenu": "메뉴 닫기"
     },
+    "auth": {
+        "login": "로그인",
+        "logout": "로그아웃",
+        "email": "이메일",
+        "password": "비밀번호",
+        "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다",
+        "demoHint": "데모 계정 — tomato@shop.com / tomato123",
+        "loginRequired": "로그인이 필요합니다"
+    },
     "cart": {
         "title": "장바구니",
         "empty": "장바구니가 비어 있습니다",
         "total": "합계",
+        "quantity": "수량",
         "remove": "삭제",
         "clear": "비우기",
         "decrease": "수량 줄이기",

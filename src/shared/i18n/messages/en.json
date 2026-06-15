@@ -10,10 +10,20 @@
         "openMenu": "Open menu",
         "closeMenu": "Close menu"
     },
+    "auth": {
+        "login": "Log in",
+        "logout": "Log out",
+        "email": "Email",
+        "password": "Password",
+        "invalidCredentials": "Invalid email or password",
+        "demoHint": "Demo account — tomato@shop.com / tomato123",
+        "loginRequired": "Login required"
+    },
     "cart": {
         "title": "Cart",
         "empty": "Your cart is empty",
         "total": "Total",
+        "quantity": "Quantity",
         "remove": "Remove",
         "clear": "Clear cart",
         "decrease": "Decrease quantity",

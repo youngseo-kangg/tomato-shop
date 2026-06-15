@@ -4,6 +4,7 @@ import { Link, type Locale } from '@shared/i18n';
 
 import { getAllCollections } from '@entities/collection';
 
+import { AuthMenu } from '@features/auth';
 import { CartDrawer } from '@features/cart';
 
 import { CategoryDropdown } from './category-dropdown';
@@ -33,6 +34,7 @@ export async function Header() {
                     <CategoryDropdown collections={collections} />
                 </div>
                 <div className="flex items-center gap-4">
+                    <AuthMenu />
                     <LanguageSwitcher />
                     <ThemeToggle />
                     <CartDrawer />

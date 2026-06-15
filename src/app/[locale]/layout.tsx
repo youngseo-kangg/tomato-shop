@@ -16,7 +16,10 @@ import { QueryProvider } from '@app/providers';
 import '../globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const geistMono = Geist_Mono({
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
+});
 
 /**
  * 무플래시 테마 스크립트. paint 전에 동기 실행돼 localStorage(없으면 시스템 설정)를 읽어
