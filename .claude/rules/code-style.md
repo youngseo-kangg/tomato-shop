@@ -30,6 +30,7 @@
 - **`eslint-plugin-import`의 `import/order` 룰로 강제** (auto-fix). `eslint.config.mjs`에 설정됨
   - `@shared`→`@entities`→`@features`→`@widgets`→`@app` 순으로 pathGroups 지정, 그룹 간 빈 줄, 알파벳 정렬
   - 적용: `pnpm lint:fix`. (참고: `import` 플러그인은 eslint-config-next가 이미 등록하므로 재선언 금지)
+- **에디터 organizeImports(알파벳 정렬) 금지.** 그룹별 `import/order`와 정렬 기준이 달라 충돌한다. 저장 시엔 organizeImports 대신 **eslint `fixAll`을 돌릴 것** — `.vscode/settings.json`에 `source.organizeImports: never` + `source.fixAll.eslint: explicit`로 설정됨(VS Code). 다른 에디터도 같은 원칙(정렬은 eslint 단일 출처).
 
 ## Tailwind
 
