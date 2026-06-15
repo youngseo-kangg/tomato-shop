@@ -5,7 +5,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@shared/i18n';
 
 import { getAllCollectionHandles, getCollectionByHandle } from '@entities/collection';
-import { getProductsByCollection, ProductCard } from '@entities/product';
+import { getProductsByCollection } from '@entities/product';
+
+import { ProductCard } from '@widgets/product-card';
 
 export const revalidate = 300;
 

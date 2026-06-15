@@ -2,7 +2,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import type { Locale } from '@shared/i18n';
 
-import { getAllProducts, ProductCard } from '@entities/product';
+import { getAllProducts } from '@entities/product';
+
+import { ProductCard } from '@widgets/product-card';
 
 export const revalidate = 300;
 

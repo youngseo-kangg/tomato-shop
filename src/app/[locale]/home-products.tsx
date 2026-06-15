@@ -1,30 +1,22 @@
 'use client';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 import type { Locale } from '@shared/i18n';
 import { SearchInput } from '@shared/ui';
 
-import { ProductCard } from '@entities/product';
+import { useProductSearch } from '@features/search';
 
-import { fetchProducts } from '../api/fetch-products';
+import { ProductCard } from '@widgets/product-card';
 
 /**
- * 클라이언트 검색 (TanStack Query). 서버 상태는 Context가 아니라 Query가 관리.
- * 입력 → useQuery → /api/products. isLoading/isError 가 일관되게 노출된다.
+ * 홈 상품 탐색(검색 + 그리드). widget인 ProductCard를 직접 쓰므로 app 레이어에 둔다
+ * (features/search 같은 하위 레이어는 widget을 import 못 함). 검색 로직은 useProductSearch 훅에서.
  */
-export function ProductSearch() {
+export function HomeProducts() {
     const t = useTranslations('catalog');
     const locale = useLocale() as Locale;
-    const [query, setQuery] = useState('');
-
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ['products', locale, query],
-        queryFn: () => fetchProducts(query, locale),
-        placeholderData: keepPreviousData,
-    });
+    const { query, setQuery, products, isLoading, isError } = useProductSearch(locale);
 
     return (
         <div>
@@ -39,12 +31,12 @@ export function ProductSearch() {
 
             {!isError && (
                 <p className="text-muted-foreground mt-4 text-sm" aria-live="polite">
-                    {isLoading ? '…' : t('resultCount', { count: data?.length ?? 0 })}
+                    {isLoading ? '…' : t('resultCount', { count: products?.length ?? 0 })}
                 </p>
             )}
 
             <div className="mt-4 grid grid-cols-2 gap-6 sm:grid-cols-3">
-                {data?.map((product) => (
+                {products?.map((product) => (
                     <ProductCard key={product.handle} product={product} locale={locale} />
                 ))}
             </div>

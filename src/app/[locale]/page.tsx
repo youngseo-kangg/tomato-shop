@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import { ProductSearch } from '@features/search';
+import { HomeProducts } from './home-products';
 
 // 정적 + 5분 ISR
 export const revalidate = 300;
@@ -17,7 +17,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
             {/* 정적 껍데기(이 페이지) + 동적 조각(검색은 클라이언트 TanStack Query) */}
             <div className="mt-8">
-                <ProductSearch />
+                <HomeProducts />
             </div>
         </section>
     );

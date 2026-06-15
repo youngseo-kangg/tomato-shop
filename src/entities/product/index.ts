@@ -7,5 +7,4 @@ export {
     getProductsByCollection,
     searchProducts,
 } from './api/product-repository';
-export { ProductCard } from './ui/product-card';
 export { ProductBadge } from './ui/product-badge';
