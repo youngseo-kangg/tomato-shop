@@ -1,0 +1,14 @@
+{
+    // 포맷은 Prettier(.prettierrc.json: 4-space·single quote·120)로 통일
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    // import 정렬은 에디터의 알파벳 organizeImports를 끄고, ESLint import/order(그룹별)로 위임.
+    // 둘은 정렬 기준이 달라(알파벳 vs 그룹) 함께 켜면 충돌 → eslint가 단일 출처.
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "never",
+        "source.fixAll.eslint": "explicit"
+    },
+
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}
