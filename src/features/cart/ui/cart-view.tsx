@@ -36,7 +36,7 @@ export function CartView() {
         <div className="space-y-6">
             <ul className="border-border divide-border divide-y border-y">
                 {items.map((item) => (
-                    <CartLineItem key={item.handle} item={item} />
+                    <CartLineItem key={item.id} item={item} />
                 ))}
             </ul>
 

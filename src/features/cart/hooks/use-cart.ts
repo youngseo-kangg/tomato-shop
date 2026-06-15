@@ -3,7 +3,7 @@
 import { useCallback, useContext, useMemo } from 'react';
 
 import { CartContext } from '../model/cart-context';
-import type { CartProduct } from '../types/cart';
+import type { CartProduct, SelectedOption } from '../types/cart';
 
 /**
  * 카트 상태 + 액션 노출. 상태(Context)는 Provider가, 액션은 여기서(룰: action은 훅으로 분리).
@@ -15,12 +15,13 @@ export function useCart() {
     const { items, isHydrated, dispatch } = ctx;
 
     const addItem = useCallback(
-        (product: CartProduct, quantity = 1) => dispatch({ type: 'add', product, quantity }),
+        (product: CartProduct, quantity = 1, selected: SelectedOption[] = []) =>
+            dispatch({ type: 'add', product, quantity, selected }),
         [dispatch],
     );
-    const removeItem = useCallback((handle: string) => dispatch({ type: 'remove', handle }), [dispatch]);
+    const removeItem = useCallback((id: string) => dispatch({ type: 'remove', id }), [dispatch]);
     const setQuantity = useCallback(
-        (handle: string, quantity: number) => dispatch({ type: 'setQuantity', handle, quantity }),
+        (id: string, quantity: number) => dispatch({ type: 'setQuantity', id, quantity }),
         [dispatch],
     );
     const clear = useCallback(() => dispatch({ type: 'clear' }), [dispatch]);

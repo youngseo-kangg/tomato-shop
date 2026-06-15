@@ -7,6 +7,16 @@
         "color": "#e23b2e",
         "image": "/products/tomato-coin-wallet.png",
         "collection": "accessory",
+        "options": [
+            {
+                "name": { "ko": "색상", "en": "Color" },
+                "values": [
+                    { "id": "red", "label": { "ko": "빨강", "en": "Red" } },
+                    { "id": "yellow", "label": { "ko": "노랑", "en": "Yellow" } },
+                    { "id": "green", "label": { "ko": "초록", "en": "Green" } }
+                ]
+            }
+        ],
         "title": { "ko": "토마토 동전지갑", "en": "Tomato Coin Wallet" },
         "description": {
             "ko": "토마토 단면을 그대로 옮긴 원형 동전지갑입니다. 동전과 이어버드, 카드 한두 장을 넣기 좋은 크기로, 지퍼를 빙 둘러 여닫아요. 가방 속에서도 금방 눈에 띕니다.",
@@ -25,6 +35,16 @@
         "color": "#c62f25",
         "image": "/products/tomato-cushion-large.png",
         "collection": "cushion",
+        "options": [
+            {
+                "name": { "ko": "색상", "en": "Color" },
+                "values": [
+                    { "id": "red", "label": { "ko": "빨강", "en": "Red" } },
+                    { "id": "yellow", "label": { "ko": "노랑", "en": "Yellow" } },
+                    { "id": "green", "label": { "ko": "초록", "en": "Green" } }
+                ]
+            }
+        ],
         "title": { "ko": "토마토 쿠션 라지", "en": "Tomato Cushion Large" },
         "description": {
             "ko": "물방울이 송골송골 맺힌 듯한 디테일이 살아 있는 푹신한 토마토 쿠션입니다. 소파나 침대에 두기 좋고, 커버는 분리해 세탁할 수 있어 오래 깨끗하게 씁니다.",
@@ -43,6 +63,16 @@
         "color": "#d6342a",
         "image": "/products/tomato-cushion-medium.png",
         "collection": "cushion",
+        "options": [
+            {
+                "name": { "ko": "색상", "en": "Color" },
+                "values": [
+                    { "id": "red", "label": { "ko": "빨강", "en": "Red" } },
+                    { "id": "yellow", "label": { "ko": "노랑", "en": "Yellow" } },
+                    { "id": "green", "label": { "ko": "초록", "en": "Green" } }
+                ]
+            }
+        ],
         "title": { "ko": "토마토 쿠션 미디엄", "en": "Tomato Cushion Medium" },
         "description": {
             "ko": "큼직한 꼭지 자수가 포인트인 미디엄 사이즈 토마토 쿠션입니다. 라지보다 한 단계 작아 작은 의자나 아이 방에도 부담 없이 어울립니다.",
@@ -97,6 +127,15 @@
         "color": "#d6342a",
         "image": "/products/tomato-mug.png",
         "collection": "kitchen",
+        "options": [
+            {
+                "name": { "ko": "색상", "en": "Color" },
+                "values": [
+                    { "id": "white", "label": { "ko": "화이트", "en": "White" } },
+                    { "id": "black", "label": { "ko": "블랙", "en": "Black" } }
+                ]
+            }
+        ],
         "title": { "ko": "토마토 머그", "en": "Tomato Mug" },
         "description": {
             "ko": "토마토 단면을 큼직하게 프린트한 머그컵입니다. 흰 바탕에 빨간 토마토가 선명하게 들어가 아침 커피 한 잔도 기분 좋게 만들어 줍니다.",

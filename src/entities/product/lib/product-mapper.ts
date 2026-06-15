@@ -18,5 +18,9 @@ export function toProduct(raw: RawProduct, locale: Locale): Product {
         title: raw.title[locale],
         description: raw.description[locale],
         highlights: raw.highlights[locale],
+        options: (raw.options ?? []).map((option) => ({
+            name: option.name[locale],
+            values: option.values.map((value) => ({ id: value.id, label: value.label[locale] })),
+        })),
     };
 }

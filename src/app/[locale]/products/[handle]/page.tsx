@@ -8,7 +8,7 @@ import { formatPrice } from '@shared/libs';
 
 import { getAllProductHandles, getProductByHandle, ProductBadge } from '@entities/product';
 
-import { AddToCartButton } from '@features/cart';
+import { AddToCartForm } from '@features/cart';
 
 export const revalidate = 300;
 
@@ -72,7 +72,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     </ul>
                 )}
                 <div className="mt-8">
-                    <AddToCartButton product={product} />
+                    <AddToCartForm product={product} />
                 </div>
             </div>
         </article>

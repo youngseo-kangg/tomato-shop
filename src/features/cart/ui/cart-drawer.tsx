@@ -69,7 +69,7 @@ export function CartDrawer() {
                     <>
                         <ul className="divide-border min-h-0 flex-1 divide-y overflow-y-auto px-4">
                             {items.map((item) => (
-                                <CartLineItem key={item.handle} item={item} />
+                                <CartLineItem key={item.id} item={item} />
                             ))}
                         </ul>
                         <div className="border-border space-y-3 border-t px-4 py-4">

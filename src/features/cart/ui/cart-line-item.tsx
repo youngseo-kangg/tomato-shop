@@ -9,6 +9,8 @@ import { formatPrice } from '@shared/libs';
 import { useCart } from '../hooks/use-cart';
 import type { CartItem } from '../types/cart';
 
+import { QuantityStepper } from './quantity-stepper';
+
 /**
  * 카트 한 줄(썸네일·제목·단가·수량±·제거). 페이지(CartView)와 드로어(CartDrawer)가 공유.
  */
@@ -27,31 +29,26 @@ export function CartLineItem({ item }: { item: CartItem }) {
             </div>
             <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{item.title}</p>
+                {item.options.length > 0 && (
+                    <p className="text-muted-foreground truncate text-xs">
+                        {item.options.map((o) => `${o.name}: ${o.value}`).join(' · ')}
+                    </p>
+                )}
                 <p className="text-muted-foreground text-sm">{formatPrice(item.price, item.currency, locale)}</p>
-                <div className="mt-1 flex items-center gap-1">
-                    <button
-                        type="button"
-                        aria-label={t('decrease')}
-                        onClick={() => setQuantity(item.handle, item.quantity - 1)}
-                        className="border-border hover:bg-muted inline-flex h-6 w-6 items-center justify-center rounded border text-sm"
-                    >
-                        −
-                    </button>
-                    <span className="w-7 text-center text-sm tabular-nums">{item.quantity}</span>
-                    <button
-                        type="button"
-                        aria-label={t('increase')}
-                        onClick={() => setQuantity(item.handle, item.quantity + 1)}
-                        className="border-border hover:bg-muted inline-flex h-6 w-6 items-center justify-center rounded border text-sm"
-                    >
-                        +
-                    </button>
+                <div className="mt-1">
+                    <QuantityStepper
+                        value={item.quantity}
+                        onDecrement={() => setQuantity(item.id, item.quantity - 1)}
+                        onIncrement={() => setQuantity(item.id, item.quantity + 1)}
+                        decreaseLabel={t('decrease')}
+                        increaseLabel={t('increase')}
+                    />
                 </div>
             </div>
             <button
                 type="button"
                 aria-label={t('remove')}
-                onClick={() => removeItem(item.handle)}
+                onClick={() => removeItem(item.id)}
                 className="text-muted-foreground hover:text-destructive shrink-0 p-1"
             >
                 ✕
