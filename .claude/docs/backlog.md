@@ -4,21 +4,18 @@
 
 ## 기능 (예정)
 
-- [ ] **위시리스트** — 담기/빼기. TanStack mutation 패턴 연습 (`features/wishlist`)
-- [ ] **ProductCard 바로 담기 / 바로 좋아요** — 상세 진입 없이 카드에서 바로.
-    - 담기 = 카트(수량 1). 카드 hover/포커스 시 노출 고려.
-    - **좋아요 = 회원만** → auth(`useAuth`) 의존. 비회원이면 로그인 유도. wishlist 필요.
-- [ ] **상세 갯수 조정 + 옵션 선택** — `/products/[handle]`.
-    - 수량 stepper(담기 시 수량 반영 — cart는 이미 quantity 지원).
-    - **옵션 선택**은 데이터 모델 필요: 상품에 options/variants 필드 없음 → 모델부터. 옵션 조합이 담는 단위(라인아이템 key)에 영향.
+- [ ] **위시리스트** — 담기/빼기. TanStack mutation 패턴 연습 (`features/wishlist`). 회원별 데이터 → 세션 쿠키 + `/api/wishlist` route handler(in-memory). 테스트는 MSW.
+- [ ] **ProductCard 바로 좋아요 (회원만)** — 카드에서 좋아요(바로 담기는 **완료**). auth(`useAuth`)+wishlist 의존, 비회원이면 로그인 유도.
 - [ ] **메인 페이지 큐레이션 + 검색 페이지 분리** — 홈은 "보여주는" 곳, 검색은 전용 페이지로.
     - **홈 큐레이션**: 지금처럼 인라인 검색 그리드 말고 **베스트(잘 팔리는 것)·신상품** 등 섹션 노출. `tags`(best/new)로 이미 구분되니 섹션별 필터(예: `getProductsByTag`)로. **서버 컴포넌트로 정적 렌더**(ISR 유지). 현재 `app/[locale]/home-products.tsx`(인라인 검색)를 큐레이션 섹션으로 교체.
     - **검색 페이지 `/search?q=`**: 홈 검색창에 입력/제출 → `/search?q=검색어`로 이동, 검색은 전용 `/search`에서. 검색창은 `useRouter().push('/search?q='+q)` 또는 `<form>` GET.
     - **`/search` ISR 주의**: `q`를 **page의 `searchParams`로 읽으면 dynamic 강등**. 정적 셸 유지하려면 **client(`useSearchParams`)에서** 읽어 `useProductSearch` 초기값으로. (검색 자체는 동적이라 dynamic이어도 무방 — 취향) `useProductSearch`를 initialQuery 받게 확장 + URL 동기화 고려.
-- [ ] **로그인 + 위시리스트 노출** — 로그인 상태에 따라 상세 페이지 위시리스트 버튼 노출/비노출.
-    - **ISR 함정**: 세션을 **서버(쿠키)에서 읽으면 dynamic 강등**. 테마처럼 **client-side auth 아일랜드**로 (`features/auth` + `useAuth` + 토큰 client 보관). 상세 페이지는 정적 유지, 버튼만 client island.
-    - **NextAuth/Auth.js 가능** — 단 **client-side 세션만**(`<SessionProvider>`+`useSession`). `auth()`/`getServerSession()`을 page/layout 렌더에서 부르면 dynamic 강등(ISR 깨짐). Credentials provider + 하드코딩 유저면 DB 없이 OK. `/api/auth/*`는 동적(`ƒ`)이라 무방.
-    - **MSW**는 NextAuth와 별개 도구(네트워크 mock). NextAuth Credentials를 쓰면 앱용으론 불필요, 주로 **테스트에서 외부 호출 mock**용. NextAuth 없이 갈 거면 가짜 `/api/auth/login`을 MSW로.
+- [ ] **딥링크 담기 (`/?item=<handle>`)** — 메인에 해당 쿼리로 진입 시 **옵션 없으면 자동 담기+토스트**, **있으면 QuickAdd 모달** 노출.
+    - QuickAdd의 "옵션 없으면 담기 / 있으면 모달" 분기를 **재사용**(공통 로직 추출 고려).
+    - **ISR**: `item`을 **client `useSearchParams`로** 읽기 (page `searchParams` 읽으면 dynamic 강등).
+    - **한 번만 발동**(`useEffect`, item 존재 시). 유효하지 않은 handle은 무시. 처리 후 `router.replace`로 param 제거 고려(새로고침 시 중복 담기 방지).
+    - 상품 조회: handle로(`getProductByHandle` client fetch 또는 이미 로드된 목록에서).
+- [ ] **위시리스트 버튼 노출 (로그인 상태)** — 상세 페이지에서 **회원만** 위시리스트 버튼 노출/비노출. (auth는 완료 — `useAuth`로 client island, 페이지 정적 유지.) wishlist 의존.
 - [ ] **마이페이지 (`/account`)** — 주문내역·프로필 등 회원 전용 페이지.
     - **회원 전용** → auth 의존. 비회원이면 로그인 유도(리다이렉트 또는 안내).
     - **결제 범위 밖** → 주문내역은 **mock 주문 데이터** 필요. "카트 → 가짜 주문 생성"(예: `/api/orders`, 세션 유저별 in-memory)으로 흐름만 시연.
@@ -26,6 +23,8 @@
 
 ## 완료
 
+- [x] **인증(로그인/세션)** — `/api/auth`(login·me·logout) + httpOnly 세션 쿠키(mock 유저). `features/auth`(useAuth·AuthMenu·LoginForm) + `/login`. 세션은 client 조회 → 페이지 ISR 유지. (mock — 보안 하드닝은 "나중에")
+- [x] **상세 옵션·수량 + 카드 바로 담기(QuickAdd)** — 상품 `options` + 카트 라인 키(`handle`+옵션, 같은 상품 다른 옵션=별도 라인). 상세 옵션 셀렉터·`QuantityStepper`, 카드 `QuickAdd`(옵션 없으면 담기/있으면 모달). `ProductCard`는 widget으로 이동(QuickAdd self-contained).
 - [x] **drawer 공통화** — 슬라이드오버(백드롭·Esc·슬라이드·헤더)를 `shared/ui/Drawer`(controlled, side·헤더 유연)로 추출. CartDrawer·MobileNav가 사용.
 - [x] **카트** — 담기/수량/합계/드로어/토스트 + localStorage 영속화. reducer·useCart·버튼 테스트. (`features/cart`, model/ui/hooks/types)
 - [x] **GNB + 카테고리 필터** — `entities/collection` + 정적 `/collections/[handle]`(ISR) + GNB(데스크탑 호버 드롭다운/모바일 드로어). 상품에 `collection` 필드.
