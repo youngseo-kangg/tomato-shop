@@ -30,6 +30,11 @@ export async function getProductsByCollection(collection: string, locale: Locale
     return DATA.filter((p) => p.collection === collection).map((raw) => toProduct(raw, locale));
 }
 
+/** 특정 태그(예: best·new)가 달린 상품만 — 홈 큐레이션 섹션용 */
+export async function getProductsByTag(tag: string, locale: Locale): Promise<Product[]> {
+    return DATA.filter((p) => p.tags.includes(tag)).map((raw) => toProduct(raw, locale));
+}
+
 export async function searchProducts(query: string, locale: Locale): Promise<Product[]> {
     const q = query.trim().toLowerCase();
     const products = await getAllProducts(locale);

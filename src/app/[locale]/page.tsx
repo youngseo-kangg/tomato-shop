@@ -1,8 +1,14 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import { HomeProducts } from './home-products';
+import type { Locale } from '@shared/i18n';
 
-// 정적 + 5분 ISR
+import { getProductsByTag } from '@entities/product';
+
+import { SearchBar } from '@features/search';
+
+import { ProductSection } from './product-section';
+
+// 정적 + 5분 ISR. 큐레이션은 서버 렌더(정적), 검색은 /search로 이동.
 export const revalidate = 300;
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -10,15 +16,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     setRequestLocale(locale);
     const t = await getTranslations('home');
 
-    return (
-        <section>
-            <h1 className="text-2xl font-semibold">{t('title')}</h1>
-            <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
+    const [best, fresh] = await Promise.all([
+        getProductsByTag('best', locale as Locale),
+        getProductsByTag('new', locale as Locale),
+    ]);
 
-            {/* 정적 껍데기(이 페이지) + 동적 조각(검색은 클라이언트 TanStack Query) */}
-            <div className="mt-8">
-                <HomeProducts />
-            </div>
-        </section>
+    return (
+        <div className="space-y-10">
+            <section>
+                <h1 className="text-2xl font-semibold">{t('title')}</h1>
+                <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
+                <div className="mt-6">
+                    <SearchBar />
+                </div>
+            </section>
+
+            <ProductSection title={t('bestTitle')} products={best} locale={locale as Locale} />
+            <ProductSection title={t('newTitle')} products={fresh} locale={locale as Locale} />
+        </div>
     );
 }

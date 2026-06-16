@@ -5,6 +5,7 @@ export {
     getProductByHandle,
     getAllProductHandles,
     getProductsByCollection,
+    getProductsByTag,
     searchProducts,
 } from './api/product-repository';
 export { ProductBadge } from './ui/product-badge';

@@ -8,7 +8,9 @@
         "shop": "Shop",
         "menu": "Menu",
         "openMenu": "Open menu",
-        "closeMenu": "Close menu"
+        "closeMenu": "Close menu",
+        "backToHome": "Back to home",
+        "loading": "Loading"
     },
     "auth": {
         "login": "Log in",
@@ -36,11 +38,16 @@
     },
     "home": {
         "title": "Tomato goods",
-        "subtitle": "Little things made of tomato"
+        "subtitle": "Little things made of tomato",
+        "bestTitle": "Popular",
+        "newTitle": "New arrivals"
     },
     "catalog": {
         "title": "All products",
+        "searchTitle": "Search",
         "empty": "No products",
+        "noResults": "No results found",
+        "loadError": "Failed to load products",
         "searchPlaceholder": "Search products...",
         "resultCount": "{count} products"
     },
