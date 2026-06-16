@@ -3,9 +3,9 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { Link, usePathname, type Locale } from '@shared/i18n';
+import { usePathname, type Locale } from '@shared/i18n';
 import { formatPrice } from '@shared/libs';
-import { Drawer } from '@shared/ui';
+import { Button, Drawer } from '@shared/ui';
 
 import { useCart } from '../hooks/use-cart';
 
@@ -79,13 +79,9 @@ export function CartDrawer() {
                                     {formatPrice(totalPrice, items[0].currency, locale)}
                                 </span>
                             </div>
-                            <Link
-                                href="/cart"
-                                onClick={() => setOpen(false)}
-                                className="bg-primary text-primary-foreground hover:bg-tomato-600 block rounded-md py-2 text-center text-sm font-medium"
-                            >
+                            <Button href="/cart" onClick={() => setOpen(false)} className="w-full">
                                 {t('viewCart')}
-                            </Link>
+                            </Button>
                             <button
                                 type="button"
                                 onClick={clear}
