@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { usePathname } from '@shared/i18n';
 import { cn } from '@shared/libs';
@@ -16,9 +16,18 @@ import { QuantityStepper } from './quantity-stepper';
 
 /**
  * 상세 페이지 담기 폼 — 옵션 셀렉터 + 수량 stepper + 담기. 옵션 선택값으로 카트 라인을 만든다.
- * cart 페이지가 아닐 때만 토스트.
+ * cart 페이지가 아닐 때만 토스트. `action` 슬롯엔 담기 버튼 옆에 둘 부가 액션(예: 좋아요)을 주입한다
+ * (도메인 무관 ReactNode라 cart→다른 feature 의존 없음 — 합성은 상위 widget이 담당).
  */
-export function AddToCartForm({ product, onAdded }: { product: Product; onAdded?: () => void }) {
+export function AddToCartForm({
+    product,
+    onAdded,
+    action,
+}: {
+    product: Product;
+    onAdded?: () => void;
+    action?: ReactNode;
+}) {
     const t = useTranslations('common');
     const tCart = useTranslations('cart');
     const { addItem } = useCart();
@@ -78,9 +87,12 @@ export function AddToCartForm({ product, onAdded }: { product: Product; onAdded?
                 />
             </div>
 
-            <Button onClick={handleAddToCart} className="w-full sm:w-auto">
-                {t('addToCart')}
-            </Button>
+            <div className="flex items-center gap-3">
+                <Button onClick={handleAddToCart} className="flex-1 sm:flex-none">
+                    {t('addToCart')}
+                </Button>
+                {action}
+            </div>
         </div>
     );
 }

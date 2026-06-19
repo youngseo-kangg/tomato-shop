@@ -15,3 +15,12 @@ export function findUser(email: string, password: string): MockUser | undefined 
 export function findUserById(id: string): MockUser | undefined {
     return USERS.find((u) => u.id === id);
 }
+
+/** 프로필(이름/이메일) 수정. in-memory라 프로세스 재시작 시 초기화(데모). 변경된 유저 반환 */
+export function updateUser(id: string, patch: { name?: string; email?: string }): MockUser | undefined {
+    const user = findUserById(id);
+    if (!user) return undefined;
+    if (patch.name !== undefined) user.name = patch.name;
+    if (patch.email !== undefined) user.email = patch.email;
+    return user;
+}

@@ -34,7 +34,35 @@
         "openCart": "Open cart",
         "viewCart": "View cart",
         "close": "Close",
+        "continueShopping": "Continue shopping",
+        "checkout": "Checkout",
+        "orderedToast": "Order placed"
+    },
+    "wishlist": {
+        "title": "Wishlist",
+        "empty": "Your wishlist is empty",
+        "add": "Add to wishlist",
+        "remove": "Remove from wishlist",
+        "open": "Open wishlist",
+        "loginRequired": "Log in to use your wishlist",
+        "addedToast": "Added to wishlist",
         "continueShopping": "Continue shopping"
+    },
+    "account": {
+        "title": "My account",
+        "profile": "Profile",
+        "name": "Name",
+        "email": "Email",
+        "save": "Save",
+        "saved": "Saved",
+        "saveError": "Failed to save",
+        "orders": "Orders",
+        "noOrders": "No orders yet",
+        "orderNumber": "Order",
+        "orderDate": "Date",
+        "orderTotal": "Total",
+        "loginRequired": "Login required",
+        "goToLogin": "Go to login"
     },
     "home": {
         "title": "Tomato goods",

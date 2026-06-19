@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { fetchMe, login as loginApi, logout as logoutApi } from '../api/auth-api';
+import { fetchMe, login as loginApi, logout as logoutApi, updateProfile as updateProfileApi } from '../api/auth-api';
 
 const ME_KEY = ['auth', 'me'];
 
@@ -25,6 +25,11 @@ export function useAuth() {
         onSuccess: () => queryClient.setQueryData(ME_KEY, null),
     });
 
+    const updateProfileMutation = useMutation({
+        mutationFn: (patch: { name: string; email: string }) => updateProfileApi(patch),
+        onSuccess: (updated) => queryClient.setQueryData(ME_KEY, updated),
+    });
+
     return {
         user: user ?? null,
         isAuthenticated: !!user,
@@ -34,5 +39,9 @@ export function useAuth() {
         logout: logoutMutation.mutate,
         isLoggingIn: loginMutation.isPending,
         loginFailed: loginMutation.isError,
+        updateProfile: updateProfileMutation.mutateAsync,
+        isSavingProfile: updateProfileMutation.isPending,
+        profileSaved: updateProfileMutation.isSuccess,
+        profileError: updateProfileMutation.isError,
     };
 }

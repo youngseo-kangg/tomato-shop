@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@shared/i18n';
+import { TomatoIcon } from '@shared/ui';
 
 import { useAuth } from '../hooks/use-auth';
 
@@ -12,6 +13,7 @@ import { useAuth } from '../hooks/use-auth';
  */
 export function AuthMenu() {
     const t = useTranslations('auth');
+    const tWishlist = useTranslations('wishlist');
     const { user, isAuthenticated, isLoading, logout } = useAuth();
 
     if (isLoading) return null;
@@ -27,8 +29,17 @@ export function AuthMenu() {
     const handleLogout = () => logout();
 
     return (
-        <div className="flex items-center gap-2 text-sm">
-            <span className="hidden sm:inline">{user?.name}</span>
+        <div className="flex items-center gap-2 text-sm sm:gap-3">
+            <Link
+                href="/wishlist"
+                aria-label={tWishlist('open')}
+                className="hover:bg-muted focus-visible:ring-ring inline-flex h-8 w-8 items-center justify-center rounded focus-visible:ring-2 focus-visible:outline-none"
+            >
+                <TomatoIcon className="h-5 w-5" />
+            </Link>
+            <Link href="/account" className="hover:text-foreground hidden sm:inline">
+                {user?.name}
+            </Link>
             <button type="button" onClick={handleLogout} className="text-muted-foreground hover:text-foreground">
                 {t('logout')}
             </button>

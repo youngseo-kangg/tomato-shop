@@ -1,6 +1,7 @@
 export { Button } from './atoms/button';
 export { Badge } from './atoms/badge';
 export { Input } from './atoms/input';
+export { TomatoIcon } from './atoms/tomato-icon';
 export { Drawer } from './drawer';
 export { ErrorBoundary } from './error-boundary';
 export { Modal } from './modal';

@@ -8,7 +8,7 @@ import { formatPrice } from '@shared/libs';
 
 import { getAllProductHandles, getProductByHandle, ProductBadge } from '@entities/product';
 
-import { AddToCartForm } from '@features/cart';
+import { ProductActions } from '@widgets/product-actions';
 
 export const revalidate = 300;
 
@@ -72,7 +72,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     </ul>
                 )}
                 <div className="mt-8">
-                    <AddToCartForm product={product} />
+                    <ProductActions product={product} />
                 </div>
             </div>
         </article>

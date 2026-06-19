@@ -34,7 +34,35 @@
         "openCart": "장바구니 열기",
         "viewCart": "장바구니 보기",
         "close": "닫기",
+        "continueShopping": "쇼핑 계속하기",
+        "checkout": "주문하기",
+        "orderedToast": "주문이 완료되었습니다"
+    },
+    "wishlist": {
+        "title": "위시리스트",
+        "empty": "위시리스트가 비어 있습니다",
+        "add": "위시리스트에 추가",
+        "remove": "위시리스트에서 제거",
+        "open": "위시리스트 열기",
+        "loginRequired": "위시리스트는 로그인 후 이용할 수 있습니다",
+        "addedToast": "위시리스트에 담았습니다",
         "continueShopping": "쇼핑 계속하기"
+    },
+    "account": {
+        "title": "마이페이지",
+        "profile": "프로필",
+        "name": "이름",
+        "email": "이메일",
+        "save": "저장",
+        "saved": "저장되었습니다",
+        "saveError": "저장에 실패했습니다",
+        "orders": "주문 내역",
+        "noOrders": "주문 내역이 없습니다",
+        "orderNumber": "주문번호",
+        "orderDate": "주문일",
+        "orderTotal": "합계",
+        "loginRequired": "로그인이 필요합니다",
+        "goToLogin": "로그인하러 가기"
     },
     "home": {
         "title": "토마토 굿즈",
