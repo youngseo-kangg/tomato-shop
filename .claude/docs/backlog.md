@@ -4,8 +4,8 @@
 
 ## 기능 (예정)
 
-- [ ] **위시리스트** — 담기/빼기. TanStack mutation 패턴 연습 (`features/wishlist`). 회원별 데이터 → 세션 쿠키 + `/api/wishlist` route handler(in-memory). 테스트는 MSW.
-- [ ] **ProductCard 바로 좋아요 (회원만)** — 카드에서 좋아요(바로 담기는 **완료**). auth(`useAuth`)+wishlist 의존, 비회원이면 로그인 유도.
+- [ ] **ProductCard 바로 좋아요 (회원만)** — 카드에서 좋아요(바로 담기는 **완료**, 상세 좋아요도 **완료**). auth(`useAuth`)+wishlist 의존, 비회원이면 로그인 유도. (상세의 `WishlistButton` 재사용 가능 — 카드 오버레이로.)
+- [ ] **위시리스트 컴포넌트 테스트 (MSW)** — `WishlistButton`/`WishlistView` RTL. `fetch` 모킹(MSW)으로 토글·삭제 동작 검증. 현재 store(순수 in-memory)는 단위 테스트 완료, fetch 경유 UI는 미커버.
 - [ ] **메인 페이지 큐레이션 + 검색 페이지 분리** — 홈은 "보여주는" 곳, 검색은 전용 페이지로.
     - **홈 큐레이션**: 지금처럼 인라인 검색 그리드 말고 **베스트(잘 팔리는 것)·신상품** 등 섹션 노출. `tags`(best/new)로 이미 구분되니 섹션별 필터(예: `getProductsByTag`)로. **서버 컴포넌트로 정적 렌더**(ISR 유지). 현재 `app/[locale]/home-products.tsx`(인라인 검색)를 큐레이션 섹션으로 교체.
     - **검색 페이지 `/search?q=`**: 홈 검색창에 입력/제출 → `/search?q=검색어`로 이동, 검색은 전용 `/search`에서. 검색창은 `useRouter().push('/search?q='+q)` 또는 `<form>` GET.
@@ -15,13 +15,12 @@
     - **ISR**: `item`을 **client `useSearchParams`로** 읽기 (page `searchParams` 읽으면 dynamic 강등).
     - **한 번만 발동**(`useEffect`, item 존재 시). 유효하지 않은 handle은 무시. 처리 후 `router.replace`로 param 제거 고려(새로고침 시 중복 담기 방지).
     - 상품 조회: handle로(`getProductByHandle` client fetch 또는 이미 로드된 목록에서).
-- [ ] **위시리스트 버튼 노출 (로그인 상태)** — 상세 페이지에서 **회원만** 위시리스트 버튼 노출/비노출. (auth는 완료 — `useAuth`로 client island, 페이지 정적 유지.) wishlist 의존.
-- [ ] **마이페이지 (`/account`)** — 주문내역·프로필 등 회원 전용 페이지.
-    - **회원 전용** → auth 의존. 비회원이면 로그인 유도(리다이렉트 또는 안내).
-    - **결제 범위 밖** → 주문내역은 **mock 주문 데이터** 필요. "카트 → 가짜 주문 생성"(예: `/api/orders`, 세션 유저별 in-memory)으로 흐름만 시연.
-    - **ISR 주의**: 주문내역은 유저별 동적. 페이지는 **정적 셸 + client island**(`useAuth` + 주문 조회 `useQuery`)로 하면 ISR 유지. 쿠키/유저데이터를 page 렌더에서 읽지 말 것.
 
 ## 완료
+
+- [x] **위시리스트 (서버·회원별)** — `features/wishlist`(useWishlist·WishlistButton·WishlistView·WishlistLineItem) + `/api/wishlist`(GET/POST/DELETE, 세션 유저별 in-memory store). TanStack Query + **낙관적 업데이트** mutation(콜러가 Product를 들고 있어 즉시 반영). GET은 handle을 repository로 해석해 `Product[]` 반환(로케일 제목). `/wishlist` 페이지(정적 셸 + AuthGate). store 단위 테스트 완료. (UI는 MSW 테스트 예정 — 위 참조)
+- [x] **상세 좋아요 버튼 (회원만)** — `WishlistButton`(하트 토글, 찜=토마토색 채움). `AddToCartForm`에 도메인 무관 `action` 슬롯 추가 + `widgets/product-actions`가 auth 게이팅하며 담기 옆에 합성(cart→wishlist 직접 의존 회피). 비회원/로딩 중 미노출. **회원 게이팅 재사용**: `features/auth/AuthGate`(로그인 시만 children 마운트 → 회원 데이터 쿼리도 회원일 때만 발동).
+- [x] **마이페이지 (`/account`, 프로필 + 주문내역)** — 정적 셸 + `AuthGate` + client island(ISR 유지). **프로필 수정**: `PATCH /api/auth/me` + `useAuth.updateProfile`(성공 시 ME 캐시 갱신 → 헤더 이름 즉시 반영). **주문내역(mock)**: `features/orders`(useOrders·OrderList) + `/api/orders`(GET/POST, 세션 유저별 in-memory, 데모 유저 seed). **체크아웃**: `widgets/checkout`(cart+orders+auth 조합)가 카트 페이지에서 주문 생성→카트 비우기→`/account` 이동. 헤더(AuthMenu)에 위시리스트·마이페이지 진입점 추가.
 
 - [x] **인증(로그인/세션)** — `/api/auth`(login·me·logout) + httpOnly 세션 쿠키(mock 유저). `features/auth`(useAuth·AuthMenu·LoginForm) + `/login`. 세션은 client 조회 → 페이지 ISR 유지. (mock — 보안 하드닝은 "나중에")
 - [x] **상세 옵션·수량 + 카드 바로 담기(QuickAdd)** — 상품 `options` + 카트 라인 키(`handle`+옵션, 같은 상품 다른 옵션=별도 라인). 상세 옵션 셀렉터·`QuantityStepper`, 카드 `QuickAdd`(옵션 없으면 담기/있으면 모달). `ProductCard`는 widget으로 이동(QuickAdd self-contained).
