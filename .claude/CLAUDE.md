@@ -10,7 +10,7 @@
 - **스택**: Next.js 16 (Turbopack) · React 19.2 · TypeScript strict · Tailwind v4 · next-intl 4 · TanStack Query 5 · pnpm
 - **데이터**: 로컬 JSON (`src/data/*.json`) — Shopify/외부 API 없음. repository 함수로 추상화해 나중에 교체 가능
 - **로케일**: `ko`(기본, `/`) · `en`(`/en`). ISR 유지가 전제
-- **범위**: 카탈로그 + (예정) 카트까지. **결제 없음**
+- **범위**: 카탈로그·카트·인증/회원(위시리스트·마이페이지·주문·체크아웃)까지. **실제 결제 없음** — 주문은 in-memory mock
 - **테스트**: Vitest + RTL
 
 ## 핵심 결정 (locked)

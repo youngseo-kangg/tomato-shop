@@ -13,8 +13,13 @@ app → widgets → features → entities → shared
 | `shared` | 도메인 무관 공용 (UI 프리미티브, util, i18n 인프라) | `cn`, `Button`, `routing` |
 | `entities` | passive data: 도메인 정의 + 조회(read) | `product` (types·repository·mapper·ProductCard) |
 | `features` | 유저 액션 + 상태변경(write) | `search` (검색 input + useQuery) |
-| `widgets` | 여러 슬라이스 조합 UI | `layout` (Header) |
+| `widgets` | 여러 슬라이스 조합 UI | `layout`(Header) · `product-actions`(cart+wishlist+auth) · `checkout`(cart+orders+auth) |
 | `app` | 라우팅·프로바이더·에러/로딩 경계 | `[locale]/...` |
+
+## cross-feature 합성은 widget이 (동일 레이어 결합 회피)
+
+- feature는 다른 feature를 import하지 않는다(동일 레이어 cross-slice 금지). 두 feature를 한 화면에서 합쳐야 하면 **widget이 합성**한다.
+- 하위(feature)는 **도메인 무관 슬롯**(`ReactNode`)만 열어두고 무엇을 끼울지는 widget이 결정. 예: `AddToCartForm`이 `action?: ReactNode` 슬롯을 두고, `widgets/product-actions`가 그 자리에 `WishlistButton`을 auth 게이팅해 합성 → cart는 wishlist/auth를 모른다.
 
 ## FSD × Atomic — 축을 나눠서 결합
 
@@ -41,6 +46,12 @@ Atomic은 **프레젠테이션 컴포넌트 분류**, FSD는 **도메인 수직 
 - repository 본문만 교체하면 로컬 JSON → 실제 API 전환 (호출부 불변)
 - Raw(JSON) → 도메인 모델 변환은 `entities/*/lib/*-mapper.ts` (순수 함수)
 
+### write 경로 — API route handler 경계
+
+- read는 위 repository, **write(회원별 상태)는 서버를 경유**: client `features/*/api`(`fetch('/api/*')`) → `app/api/*/route.ts` → `_lib` store.
+- 세션·in-memory store 같은 **server-only 코드는 `app/api/*/_lib`에** 둔다(클라이언트 번들/페이지에서 import 금지). store 본문만 교체하면 in-memory → DB 전환.
+- 순수 store 로직(React·Next 무관)은 분리해 단위 테스트(예: `app/api/wishlist/_lib/wishlist-store.ts` ↔ `.test.ts`).
+
 ## i18n + ISR (정적성 유지가 전제)
 
 - **페이지 렌더 경로에서 `cookies()`/`headers()` 읽지 말 것** — 한 줄만 읽어도 라우트 전체가 dynamic으로 강등
@@ -50,6 +61,7 @@ Atomic은 **프레젠테이션 컴포넌트 분류**, FSD는 **도메인 수직 
   2. 모든 layout/page: `setRequestLocale(locale)` 호출 (없으면 next-intl이 헤더 읽어 dynamic됨)
   3. `generateStaticParams`로 locale(및 핸들) prerender
 - 유저별 개인화(쿠키 의존)는 **Client Component** 또는 **`<Suspense>` 구멍**으로 격리 → "정적 껍데기 + 동적 구멍"
+    - 회원 전용 페이지(`/account`·`/wishlist`)는 **정적 셸 + `features/auth/AuthGate` client island**로 ISR 유지. AuthGate가 로그인 시에만 children을 마운트 → 회원 데이터 쿼리도 회원일 때만 발동(페이지 렌더는 쿠키를 모름).
 - 네비게이션은 `@shared/i18n`의 `Link`/`redirect`/`usePathname`/`useRouter` 사용. **`/${locale}/...` 하드코딩 금지** (ko는 prefix 없음)
 
 ### proxy(미들웨어) 위치 함정 ⚠️

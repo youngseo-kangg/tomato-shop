@@ -11,7 +11,9 @@
 |------|------|------|
 | `entities/*/lib` mapper, `shared/libs` 순수 함수 | 단위 | 최우선 (ROI 최고) |
 | `features/*/lib` 파싱·변환 | 단위 | 많이 |
+| `app/api/*/_lib` store (순수 in-memory 로직, React·Next 무관) | 단위 | 많이 |
 | 유저 액션 있는 컴포넌트 (`features/*/ui`, `shared/ui` 인터랙티브) | RTL (동작) | 중간 |
+| `fetch` 경유 UI (위시리스트 토글·삭제 등) | (예정) RTL + MSW | 중간 |
 | 핵심 플로우 (예: 담기) | (예정) E2E 1개 | 최소 |
 
 **하지 말 것**: 스냅샷 테스트, 순수 표시용 컴포넌트 테스트, CSS/레이아웃 검증(jsdom은 실제 렌더 안 함).
